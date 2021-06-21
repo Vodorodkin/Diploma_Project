@@ -1,0 +1,32 @@
+﻿@model Diploma_Project.Web_app.ViewModels.Account.RegisterModel
+
+<main class=" w-100 d-flex align-items-center text-center mx-auto">
+    <form class="mx-auto text-center" asp-action="Register" asp-controller="Account" asp-anti-forgery="true">
+        <div class="validation" asp-validation-summary="ModelOnly"></div>
+        <h1 class="h3 mb-3 fw-normal">Регистрация</h1>
+        <div class="form-floating m-2">
+            <span asp-validation-for="FullName"></span>
+            <input asp-for="FullName" class="form-control " id="floatingInput" placeholder="Ивано иван иваныч">
+            <label for="floatingInput">ФИО</label>
+        </div>
+        <div class="form-floating m-2">
+            <span asp-validation-for="Email"></span>
+            <input asp-for="Email" type="email" class="form-control " id="floatingInput" placeholder="hleb@zar.ru">
+            <label for="floatingInput">Email</label>
+        </div>
+        <div class="form-floating m-2">
+            <span asp-validation-for="Password"></span>
+            <input asp-for="Password" type="password" class="form-control" id="floatingPassword" placeholder="Пароль">
+            <label for="floatingPassword">Пароль</label>
+        </div>
+        <div class="form-floating m-2">
+            <span asp-validation-for="ConfirmPassword"></span>
+            <input asp-for="ConfirmPassword" type="password" class="form-control" id="floatingPassword" placeholder="Пароль">
+            <label for="floatingPassword">Повторите пароль</label>
+        </div>
+        <div class="d-flex align-items-center m-2">
+            <button class=" btn btn-lg btn-outline-warning m-2" type="submit">Зарегистрироваться</button>
+        </div>
+
+    </form>
+</main>

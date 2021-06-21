@@ -1,0 +1,125 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>Diploma_Project.Desktop_app</RootNamespace>
+    <UseWPF>true</UseWPF>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Icons\add.ico" />
+    <None Remove="Resources\Icons\add.png" />
+    <None Remove="Resources\Icons\bin.png" />
+    <None Remove="Resources\Icons\bread.png" />
+    <None Remove="Resources\Icons\client.png" />
+    <None Remove="Resources\Icons\delete.ico" />
+    <None Remove="Resources\Icons\devede.ico" />
+    <None Remove="Resources\Icons\edit.ico" />
+    <None Remove="Resources\Icons\edit.png" />
+    <None Remove="Resources\Icons\emp.png" />
+    <None Remove="Resources\Icons\home.ico" />
+    <None Remove="Resources\Icons\home.png" />
+    <None Remove="Resources\Icons\left-arrow.png" />
+    <None Remove="Resources\Icons\order.ico" />
+    <None Remove="Resources\Icons\order.png" />
+    <None Remove="Resources\Icons\pos.png" />
+    <None Remove="Resources\Icons\product.png" />
+    <None Remove="Resources\Icons\range.png" />
+    <None Remove="Resources\Icons\refresh.png" />
+    <None Remove="Resources\Icons\right-arrow.png" />
+    <None Remove="Resources\Icons\save.ico" />
+    <None Remove="Resources\Icons\save.png" />
+    <None Remove="Resources\Icons\shopping-cart.png" />
+    <None Remove="Resources\Icons\show.ico" />
+    <None Remove="Resources\Icons\show_passwd.png" />
+    <None Remove="Views\Windows\logo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="iTextSharp" Version="5.5.13.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.7">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.31" />
+    <PackageReference Include="ModernWpfUI" Version="0.9.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Diploma_Project.Entity-lib\Diploma_Project.Entity-lib.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Icons\add.ico" />
+    <Resource Include="Resources\Icons\add.png" />
+    <Resource Include="Resources\Icons\bin.png" />
+    <Resource Include="Resources\Icons\bread.png" />
+    <Resource Include="Resources\Icons\client.png" />
+    <Resource Include="Resources\Icons\delete.ico" />
+    <Resource Include="Resources\Icons\devede.ico" />
+    <Resource Include="Resources\Icons\edit.ico" />
+    <Resource Include="Resources\Icons\edit.png" />
+    <Resource Include="Resources\Icons\emp.png" />
+    <Resource Include="Resources\Icons\home.ico" />
+    <Resource Include="Resources\Icons\home.png" />
+    <Resource Include="Resources\Icons\left-arrow.png" />
+    <Resource Include="Resources\Icons\order.ico" />
+    <Resource Include="Resources\Icons\order.png" />
+    <Resource Include="Resources\Icons\pos.png" />
+    <Resource Include="Resources\Icons\product.png" />
+    <Resource Include="Resources\Icons\range.png" />
+    <Resource Include="Resources\Icons\refresh.png" />
+    <Resource Include="Resources\Icons\right-arrow.png" />
+    <Resource Include="Resources\Icons\save.ico" />
+    <Resource Include="Resources\Icons\save.png" />
+    <Resource Include="Resources\Icons\shopping-cart.png" />
+    <Resource Include="Resources\Icons\show.ico" />
+    <Resource Include="Resources\Icons\show_passwd.png" />
+    <Resource Include="Resources\Images\logo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\Pages\ContentDialogInputStandart.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Pages\ContentDialogOrder.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Pages\ContentDialogSeller.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Pages\ContentDialogStore.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Pages\ContentDialogOperation.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Views\Pages\ContentDialogInputStandart.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Pages\ContentDialogOrder.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Pages\ContentDialogSeller.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Pages\ContentDialogStore.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Pages\ContentDialogOperation.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+
+</Project>

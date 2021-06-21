@@ -1,0 +1,42 @@
+﻿<ui:ContentDialog x:Class="Diploma_Project.Desktop_app.Views.Pages.ContentDialogStore"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Diploma_Project.Desktop_app.Views.Pages"
+      xmlns:ui="http://schemas.modernwpf.com/2019"
+      mc:Ignorable="d"
+      Title="contentDialogProduct"
+      xmlns:vm="clr-namespace:Diploma_Project.Desktop_app.ViewModels"
+      d:DataContext="{d:DesignInstance vm:ViewModelStore}"
+      PrimaryButtonText="Сохранить"
+      PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
+      CloseButtonText="Отмена" 
+      CloseButtonClick="ContentDialog_CloseButtonClick"
+      Loaded="ContentDialog_Loaded"
+      DefaultButton="Primary" Closed="ContentDialog_Closed">
+    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+        <StackPanel HorizontalAlignment="Stretch" Margin="5">
+            <TextBox TextChanged="tbAddressOwner_TextChanged" Text="{Binding editedStore.Name}" Margin="5" ui:ControlHelper.Header="Наименование магазина" x:Name="tbName"  Width="250"></TextBox>
+            <TextBox TextChanged="tbAddressOwner_TextChanged" Text="{Binding editedStore.AddressOfPoint}"   Margin="5" ui:ControlHelper.Header="Адрес магазина"                   
+                    x:Name="tbAddressPoint"
+                    Width="250"
+                    Height="75"
+                    TextWrapping="Wrap"
+                    AcceptsReturn="True"
+                    SpellCheck.IsEnabled="True" />
+            <TextBox TextChanged="tbAddressOwner_TextChanged" Text="{Binding editedStore.Owner}" Margin="5" ui:ControlHelper.Header="Владелец" x:Name="tbOwner"  Width="250"></TextBox>
+            <ui:NumberBox ValueChanged="tbINN_ValueChanged" Value="{Binding editedStore.INN}" PlaceholderText="0000000000" Margin="5" ui:ControlHelper.Header="ИНН" x:Name="tbINN" Width="250"></ui:NumberBox>
+            <ui:NumberBox ValueChanged="tbINN_ValueChanged" Value="{Binding editedStore.KPP}" PlaceholderText="000000000" Margin="5" ui:ControlHelper.Header="КПП" x:Name="tbKPP" Width="250"></ui:NumberBox>
+            <TextBox TextChanged="tbAddressOwner_TextChanged" Text="{Binding editedStore.AddressOfOwner}"   Margin="5" ui:ControlHelper.Header="Юридический адрес"                   
+                    x:Name="tbAddressOwner"
+                    Width="250"
+                    Height="75"
+                    TextWrapping="Wrap"
+                    AcceptsReturn="True"
+                    SpellCheck.IsEnabled="True" />
+            
+        </StackPanel>
+    </StackPanel>
+    
+</ui:ContentDialog>

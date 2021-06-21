@@ -1,0 +1,101 @@
+﻿@model Diploma_Project.Web_app.ViewModels.Account.IndexViewModel
+
+<h3>Добро пожаловать, @Model.FullName</h3>
+<h6>@Model.Email</h6>
+<div class="container">
+    <h6>Ваши заказы</h6>
+
+    <form method="get">
+        <div class="row row-cols-auto">
+            <input title="Адрес магазина или статус" name="name" asp-action="Index" placeholder="Поиск по заказам" value="@Model.SelectedName" class="form-control m-1 w-25" />
+        </div>
+    </form>
+    <table class="table">
+        <tr class="header">
+            <th>
+                <a class="text-dark"
+                   asp-action="Index"
+                   asp-route-sortList="@(Model.SortViewModel.IdSort)"
+                   asp-route-name="@(Model.SelectedName)">ID</a>
+            </th>
+            <th>
+                <a class="text-dark"
+                   asp-action="Index"
+                   asp-route-sortList="@(Model.SortViewModel.AdderssSort)"
+                   asp-route-name="@(Model.SelectedName)">Адрес</a>
+            </th>
+            <th>
+                <a class="text-dark">Статус</a>
+            </th>
+            <th>
+                <a class="text-dark"
+                   asp-action="Index"
+                   asp-route-sortList="@(Model.SortViewModel.AdderssSort)"
+                   asp-route-name="@(Model.SelectedName)">Дата заказа</a>
+            </th>
+        </tr>
+        @foreach (var a in Model.Orders)
+        {
+    <tr class="content">
+        <td>@a.Id</td>
+        <td>@a.Point.AddressOfPoint</td>
+        <td>@a.Status.Name</td>
+        <td>@a.StartDateOrder</td>
+        
+    </tr>
+            @foreach (var item in a.OrderProducts)
+            {
+                <tr class="content">
+                    <td>@item.Product.Name</td>
+                    <td>@item.Amount</td>
+                </tr>
+            }
+    <tr class="content">
+        <td>Сумма заказа: @a.sumOrder руб.</td>
+        @if (a.StatusId == 1)
+        {
+            <td>
+                <a class="btn btn-light m2" asp-controller="Account" asp-action="CancelOrder" asp-route-id="@a.Id">Отменить</a>
+            </td>
+        }
+    </tr>
+
+                }
+        </table>
+
+    @if (Model.PageViewModel.HasPreviousPage)
+    {
+        <a asp-action="Index"
+           asp-route-page="@(Model.PageViewModel.PageNumber - 1)"
+           asp-route-name="@(Model.SelectedName)"
+           asp-route-sortList="@(Model.SortViewModel.Current)"
+           class="btn btn btn-light">
+            <i class="glyphicon glyphicon-chevron-left"></i>
+            Назад
+        </a>
+    }
+    @for (int i = 1; i <= Model.PageViewModel.TotalPages; i++)
+    {
+        <a asp-action="Index"
+           asp-route-page="@(i)"
+           asp-route-name="@(Model.SelectedName)"
+           asp-route-sortList="@(Model.SortViewModel.Current)"
+           class="btn btn btn-light">
+            <i class="glyphicon glyphicon-chevron"></i>
+            @i
+        </a>
+    }
+    @if (Model.PageViewModel.HasNextPage)
+    {
+        <a asp-action="Index"
+           asp-route-page="@(Model.PageViewModel.PageNumber + 1)"
+           asp-route-name="@(Model.SelectedName)"
+           asp-route-sortList="@(Model.SortViewModel.Current)"
+           class="btn btn btn-light">
+            Вперед
+            <i class="glyphicon glyphicon-chevron-right"></i>
+        </a>
+    }
+    <br />
+    <a class="btn btn-lg btn-light m-5" asp-controller="Account" asp-action="Logout">Выйти</a>
+</div>

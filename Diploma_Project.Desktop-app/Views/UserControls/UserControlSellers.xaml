@@ -1,0 +1,67 @@
+﻿<UserControl x:Class="Diploma_Project.Desktop_app.Views.UserControls.UserControlSellers"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Diploma_Project.Desktop_app.Views.UserControls"
+             xmlns:vm="clr-namespace:Diploma_Project.Desktop_app.ViewModels"
+             mc:Ignorable="d" Loaded="UserControl_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="500"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Grid.Row="0">
+            <TextBox TextChanged="textBoxSearch_TextChanged" x:Name="textBoxSearch" VerticalAlignment="Center" Height="30" Margin="5" Width="150">
+                <TextBox.ToolTip>
+                    <TextBlock>Поиск сотрудника по имени и телефону</TextBlock>
+                </TextBox.ToolTip>
+            </TextBox>
+            <ComboBox SelectionChanged="comboBoxStores_SelectionChanged" VerticalAlignment="Center" SelectedIndex="0" Height="30" Margin="5" Width="150" x:Name="comboBoxStores">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Text="{Binding Name}"></TextBlock>
+                            <TextBlock Text="{Binding AddressOfPoint}"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+                <ComboBox.ToolTip>
+                    <TextBlock>Фильтрация по магазинам</TextBlock>
+                </ComboBox.ToolTip>
+            </ComboBox>
+        </StackPanel>
+        <DataGrid SelectionUnit="FullRow" VirtualizingPanel.VirtualizationMode="Recycling" Width="1025" Height="500"
+                    VirtualizingPanel.IsVirtualizingWhenGrouping="True" 
+                    GridLinesVisibility="Horizontal" x:Name="dgSellers" SelectedIndex="0"
+                    RowDetailsVisibilityMode="Collapsed" HeadersVisibility="Column" 
+                    SelectionMode="Single" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1"
+                    SelectionChanged="dgSellers_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="300" Binding="{Binding FullName}" Header="ФИО"></DataGridTextColumn>
+                <DataGridTextColumn Width="500" Header="Магазин">
+                    <DataGridTextColumn.Binding>
+                        <MultiBinding StringFormat="{}{0} {1}">
+                            <Binding Path="Point.Name"></Binding>
+                            <Binding Path="Point.AddressOfPoint"></Binding>
+                        </MultiBinding>
+                    </DataGridTextColumn.Binding>
+                </DataGridTextColumn>
+                <DataGridTextColumn Width="200" Header="Телефон" Binding="{Binding NumberPhone,StringFormat=+7-###-###-##-##}"></DataGridTextColumn>
+            </DataGrid.Columns>
+            <DataGrid.CellStyle>
+                <Style TargetType="DataGridCell">
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource TemplatedParent}}" />
+                    <Setter Property="Background" Value="{Binding Background, RelativeSource={RelativeSource TemplatedParent}}" />
+                </Style>
+            </DataGrid.CellStyle>
+        </DataGrid>
+        <StackPanel HorizontalAlignment="Center" Grid.Row="3" Orientation="Horizontal">
+            <Button Click="btnNew_Click" x:Name="btnNew" Margin="5" Width="100">Добавить</Button>
+            <Button Click="btnEdit_Click"  x:Name="btnEdit" Margin="5" Width="100">Изменить</Button>
+            <Button Click="btnRemove_Click" x:Name="btnRemove" Margin="5" Width="100">Удалить</Button>
+        </StackPanel>
+    </Grid>
+</UserControl>

@@ -1,0 +1,89 @@
+﻿
+@model Diploma_Project.Web_app.ViewModels.BaseViewModel
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link rel="shortcut icon" href="~/images/logo.svg" type="image/svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@Model?.TitleOfPage</title>
+    <link href="~/lib/bootstrap-5.0.1-dist/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link href="~/css/Main.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar border-bottom navbar-expand-md navbar-light rounded mb-3" aria-label="Eleventh navbar example">
+            <div class="container">
+                <a href="/" class="nav-link text-dark p-0 mx-2">
+                    <img class="m-0" width="45" height="45" src="~/images/logo.svg" />
+                </a>
+                <button style="background: #a44a3f" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse align-items-center collapse" id="navbarsExample09" style="">
+                    <ul class="navbar-nav me-auto">
+
+                        <li class="align-items-center">
+                            <form class="d-flex" asp-controller="Products" asp-action="Index">
+                                <input type="search" name="name" class="form-control m-2" placeholder="Поиск по каталогу" value="@Model.SelectedProductName" aria-label="Search">
+                            </form>
+                        </li>
+                        <li class="nav-item dropdown d-flex align-items-center">
+                            <a class="text-dark nav-link dropdow" href="#" id="dropdown09" data-bs-toggle="dropdown" aria-expanded="false"><h6 class="text-center m-0">Каталог</h6></a>
+                            <ul asp-items="Model.FilterViewModel.CategoryPoducts" class="dropdown-menu" aria-labelledby="dropdown09">
+                                @foreach (var item in Model?.ProductCategories)
+                                {
+                                    <li><a class="dropdown-item" asp-controller="Products" asp-action="Index" asp-route-categoryId="@item.Id">@item.Name </a></li>
+                                }
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav">
+                        <li class="d-flex align-items-center"><a style="font-size: 1rem;" asp-controller="Stores" asp-action="Index" class="text-dark nav-link dropdow" aria-expanded="false">Магазины</a></li>
+                        <li class="d-flex align-items-center"><a style="font-size: 1rem;" asp-controller="Contacts" asp-action="Index" class="text-dark nav-link dropdow" aria-expanded="false">Партнерам</a></li>
+                        <li class="d-flex align-items-center"><a asp-controller="ShopCart" asp-action="Index" class="nav-item px-2 text-dark align-middle"><i class="bi-cart3 align-middle"></i></a></li>
+                        <li class="d-flex align-items-center"><a asp-controller="Account" asp-action="Index" class="nav-item px-2 text-dark align-middle"><i class="bi-person-circle align-middle"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        @RenderBody()
+
+    </div>
+    <footer class="pt-4 my-md-5 pt-md-5 border-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md">
+                    <img class="m-2" width="100" height="100" src="~/images/logo.svg" />
+                    <small class="d-block mb-3 text-muted">© 2021 ООО "Зарайский хлебокомбинат"</small>
+                </div>
+                <div class="col-6 col-md">
+                    <h5>Телефон</h5>
+                    <ul class="list-unstyled text-small">
+                        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">+7 (905) 595-82-32</a></li>
+                        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">+7 (905) 595-82-60</a></li>
+                        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">+7 (496) 662-48-30</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md">
+                    <h5>Почта</h5>
+                    <ul class="list-unstyled text-small">
+                        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">info@zarhleb.ru</a></li>
+
+                    </ul>
+                </div>
+                <div class="col-6 col-md">
+                    <h5>Адрес</h5>
+                    <ul class="list-unstyled text-small">
+                        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Московская область, г. Зарайск, ул. Привокзальная, д.11</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="undefined" crossorigin="anonymous"></script>
+</body>
+</html>

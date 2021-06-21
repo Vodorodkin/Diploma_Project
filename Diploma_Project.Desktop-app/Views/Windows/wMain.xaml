@@ -1,0 +1,35 @@
+﻿<Window x:Class="Diploma_Project.Desktop_app.Views.Windows.wMain"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Diploma_Project.Desktop_app.Views.Windows"
+        mc:Ignorable="d"
+        xmlns:uc="clr-namespace:Diploma_Project.Desktop_app.Views.UserControls"
+        Title="Зарайский хлебокомбинат" WindowStartupLocation="CenterScreen" Height="675" Width="1200" MinHeight="675" MinWidth="1200" MaxHeight="675"
+        xmlns:ui="http://schemas.modernwpf.com/2019"
+        ui:ThemeManager.IsThemeAware="True"
+        ui:WindowHelper.UseModernWindowStyle="True"
+        Icon="\Resources\Images\logo.png" Loaded="Window_Loaded" Closed="Window_Closed" Closing="Window_Closing">
+    <ScrollViewer>
+    <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <TabControl >
+                <TabItem  Header="Заказы" Name="tabItemOrders">
+                    <uc:UserControlOrders HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="auto" Width="auto" ></uc:UserControlOrders>
+            </TabItem>
+            <TabItem Header="Магазины" Name="tabItemPoints">
+                    <uc:UserControlStores></uc:UserControlStores>
+            </TabItem>
+            <TabItem Header="Продавцы" Name="tabItemEmployees">
+                    <uc:UserControlSellers></uc:UserControlSellers>
+            </TabItem>
+                <TabItem Header="Продукты" Name="tabItemProucts">
+                    <uc:UserControlProducts></uc:UserControlProducts>
+                </TabItem>
+                <TabItem HorizontalAlignment="Right" Header="Журнал операций" Name="tabItemOperations">
+                    <uc:UserControlOperations/>
+                </TabItem>
+            </TabControl>
+    </StackPanel>
+    </ScrollViewer>
+</Window>

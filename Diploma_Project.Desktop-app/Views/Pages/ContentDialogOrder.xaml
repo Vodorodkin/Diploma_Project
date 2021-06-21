@@ -1,0 +1,39 @@
+﻿<ui:ContentDialog x:Class="Diploma_Project.Desktop_app.Views.Pages.ContentDialogOrder"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Diploma_Project.Desktop_app.Views.Pages"
+      xmlns:ui="http://schemas.modernwpf.com/2019"
+      mc:Ignorable="d"
+      PrimaryButtonText="Сохранить"
+      PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
+      CloseButtonText="Отмена" 
+      CloseButtonClick="ContentDialog_CloseButtonClick"
+      Loaded="ContentDialog_Loaded"
+      DefaultButton="Primary" Closed="ContentDialog_Closed">
+    <StackPanel HorizontalAlignment="Stretch" Margin="5">
+        <ListBox SelectionMode="Single" x:Name="listProducts">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel></StackPanel>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                         <ColumnDefinition/>
+                         <ColumnDefinition/>
+                         <ColumnDefinition Width="25"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Margin="5" Grid.Column="0" Width="200" HorizontalAlignment="Left" VerticalAlignment="Center"  Text="{Binding Product.Name}"></TextBlock>
+                        <ui:NumberBox Margin="5" Grid.Column="1" x:Name="tb"  HorizontalAlignment="Right" Value="{Binding Amount}"></ui:NumberBox>
+                        <TextBlock Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" x:Name="btnDel" MouseLeftButtonDown="btnDel_MouseLeftButtonDown">Х</TextBlock>
+                    </Grid>
+           </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ListBox>
+        
+    </StackPanel>
+</ui:ContentDialog>

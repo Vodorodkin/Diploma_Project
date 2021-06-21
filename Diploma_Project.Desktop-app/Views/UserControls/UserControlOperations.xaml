@@ -1,0 +1,55 @@
+﻿<UserControl x:Class="Diploma_Project.Desktop_app.Views.UserControls.UserControlOperations"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Diploma_Project.Desktop_app.Views.UserControls"
+             mc:Ignorable="d" 
+             xmlns:vm="clr-namespace:Diploma_Project.Desktop_app.ViewModels"
+             Loaded="UserControl_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="500"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Grid.Row="0">
+            <TextBox TextChanged="TextBox_TextChanged" x:Name="textBoxSearch" VerticalAlignment="Center" Height="30" Margin="5" Width="150">
+                <TextBox.ToolTip>
+                    <TextBlock>Поиск по пользователю операции</TextBlock>
+                </TextBox.ToolTip>
+            </TextBox>
+            <DatePicker x:Name="dpStartDate" Margin="5" SelectedDateChanged="dpFinishDate_SelectedDateChanged" Width="150">
+                <DatePicker.ToolTip>
+                    <TextBlock>Начальная дата для фильтрации</TextBlock>
+                </DatePicker.ToolTip>
+            </DatePicker>
+            <DatePicker x:Name="dpFinishDate" SelectedDateChanged="dpFinishDate_SelectedDateChanged" Margin="5" Width="150">
+                <DatePicker.ToolTip>
+                    <TextBlock>Конечная дата для фильтации</TextBlock>
+                </DatePicker.ToolTip>
+            </DatePicker>
+        </StackPanel>
+        <DataGrid SelectionUnit="FullRow" VirtualizingPanel.VirtualizationMode="Recycling" Width="1025" Height="500"
+                    VirtualizingPanel.IsVirtualizingWhenGrouping="True" 
+                    GridLinesVisibility="Horizontal" x:Name="dgOperation" SelectedIndex="0"
+                    RowDetailsVisibilityMode="Collapsed" HeadersVisibility="Column" 
+                    SelectionMode="Single" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1"
+                    SelectionChanged="dgOperation_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="200" Binding="{Binding User.FullName}" Header="Пользователь"></DataGridTextColumn>
+                <DataGridTextColumn Width="200" Binding="{Binding Product.Name}" Header="Продукт"></DataGridTextColumn>
+                <DataGridTextColumn Width="200" Binding="{Binding Amount}" Header="Количество"></DataGridTextColumn>
+                <DataGridTextColumn Width="200" Binding="{Binding TypeOperation.Name}" Header="Тип операции"></DataGridTextColumn>
+                <DataGridTextColumn Width="200" Binding="{Binding DateOperation,StringFormat={}{0:g}}" Header="Дата и время "></DataGridTextColumn>
+            </DataGrid.Columns>
+            <DataGrid.CellStyle>
+                <Style TargetType="DataGridCell">
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource TemplatedParent}}" />
+                    <Setter Property="Background" Value="{Binding Background, RelativeSource={RelativeSource TemplatedParent}}" />
+                </Style>
+            </DataGrid.CellStyle>
+        </DataGrid>
+    </Grid>
+</UserControl>

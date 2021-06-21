@@ -1,0 +1,75 @@
+﻿
+@model Diploma_Project.Web_app.ViewModels.Strores.IndexViewModel
+
+<div>
+    <h3>Магазины</h3>
+    <form method="get">
+        <div class="row row-cols-auto">
+            <input title="Название магазина, адрес или название организации" name="name" asp-action="Index" placeholder="Поиск по магазинам" value="@Model.SelectedName" class="form-control m-1 w-25" />
+        </div>
+    </form>
+    <table class="table">
+        <tr class="header">
+            <th>
+                <a  class="text-dark"
+                   asp-action="Index"
+                   asp-route-sortList="@(Model.SortViewModel.NameSort)"
+                   asp-route-name="@(Model.SelectedName)">Название магазина</a>
+            </th>
+            <th>
+                <a class="text-dark"
+                   asp-action="Index"
+                   asp-route-sortList="@(Model.SortViewModel.AdderssSort)"
+                   asp-route-name="@(Model.SelectedName)">Адрес</a>
+            </th>
+            <th>
+                <a  class="text-dark"
+                   asp-action="Index"
+                   asp-route-sortList="@(Model.SortViewModel.OwnerSort)"
+                   asp-route-name="@(Model.SelectedName)">Владелец</a>
+            </th>
+        </tr>
+        @foreach (var a in Model.Stores)
+        {
+            <tr class="content">
+                <td>@a.Name</td>
+                <td>@a.AddressOfPoint</td>
+                <td>@a.Owner</td>
+            </tr>
+        }
+    </table>
+
+    @if (Model.PageViewModel.HasPreviousPage)
+    { 
+<a asp-action="Index"
+   asp-route-page="@(Model.PageViewModel.PageNumber - 1)"
+   asp-route-name="@(Model.SelectedName)"
+   asp-route-sortList="@(Model.SortViewModel.Current)"
+   class="btn btn btn-light">
+    <i class="glyphicon glyphicon-chevron-left"></i>
+    Назад
+</a>
+    }
+    @for (int i = 1; i <= Model.PageViewModel.TotalPages; i++)
+    {
+        <a asp-action="Index"
+           asp-route-page="@(i)"
+           asp-route-name="@(Model.SelectedName)"
+           asp-route-sortList="@(Model.SortViewModel.Current)"
+           class="btn btn btn-light">
+            <i class="glyphicon glyphicon-chevron"></i>
+            @i
+        </a>
+    }
+    @if (Model.PageViewModel.HasNextPage)
+    {
+        <a asp-action="Index"
+           asp-route-page="@(Model.PageViewModel.PageNumber + 1)"
+           asp-route-name="@(Model.SelectedName)"
+           asp-route-sortList="@(Model.SortViewModel.Current)"
+           class="btn btn btn-light">
+            Вперед
+            <i class="glyphicon glyphicon-chevron-right"></i>
+        </a>
+    }
+</div>
