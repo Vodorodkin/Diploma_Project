@@ -1,12 +1,3 @@
-Дипломный проект “Информационная система для ООО Зарайский хлебокомбинат”.
+Diploma project “Information system for Zaraisk Bakery LLC".
 
-Описание: Desktop-приложение для учета заказов, продукции, персонала и Web-приложение для оформления заказов;
-Языки программирования: C#;
-База данных: MS SQL Server;
-Технологии и фреймворки: ASP.NET core, WPF, Entity Framework core, Bootstrap, HTML, CSS;
-Недостатки:
-  Нет архитектуры. Прямое обращение к слою базы данных в контроллерах и в логике взаимодействия с xaml;
-  Один вид моделей для всего проекта;
-  Нет разделения на клиентскую часть и на API;
-  Использование базы данных для типов, вместо Enum;
-  Не использовалась VCS;
+Description: Desktop application for accounting orders, products, personnel and Web application for ordering; Programming languages: C#; Database: MS SQL Server; Technologies and frameworks: ASP.NET core, WPF, Entity Framework core, Bootstrap, HTML, CSS; Disadvantages: No architecture. Direct access to the database layer in controllers and in the logic of interaction with xaml; One type of models for the entire project; No separation into the client part and API; Using a database for types, instead of Enum; VCS was not used;
